@@ -1,6 +1,8 @@
 import java.swing.*;
 import java.awt.*;
-
+//Impossible Maze Game
+//By: JJJM
+//For Lasser's Class
 Public class Main extends JFrame
 {
   private static final int Width = 800;
