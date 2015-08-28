@@ -1,1 +1,33 @@
+import java.awt.*;
+import static java.lang.Character.*;
 
+public class Game extends Canvas implements KeyListener, Runnable
+{
+    private boolean[] keys;
+    private BufferedImage back;
+    boolean run = false;
+    int level = 1;
+    int deaths = 0;
+    
+  public Game()
+  {
+   Start startscreen = new Start();
+    startscreen.run();
+    run = true;
+    while(run)
+    {
+      if(level == 1)
+        {
+          level1 one = new level1();
+          one.run();
+        }
+        if(level == 2)
+        {
+          level2 two = new level2();
+          two.run();
+        }
+    }
+  }
+
+
+}
