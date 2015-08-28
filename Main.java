@@ -8,8 +8,16 @@ Public class Main extends JFrame
   
   public theGame()
   {
+    super("Impossible Maze");
+    setSize(Width,Height);
     
+    Game game = new Game();
     
+    ((Component)game).setFocusable(true);
+    getContentPane().add(game);
+    
+    setVisible(true);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
   public static void main(String args[])
   {
