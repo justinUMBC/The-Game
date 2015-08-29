@@ -21,4 +21,4 @@ public class Start
 		graphToBack.drawString(authors, 400, 305);
   }
 }
-g
+
