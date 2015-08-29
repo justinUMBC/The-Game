@@ -5,12 +5,12 @@ import java.awt.*;
 //By: JJJM
 //For Lasser's Class
 
-Public class Main extends JFrame
+public class Main extends JFrame
 {
   private static final int Width = 800;
   private static final int Height = 600;
   
-  public theGame()
+  public Main()
   {
     super("Impossible Maze");
     setSize(Width,Height);
