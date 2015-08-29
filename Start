@@ -9,15 +9,16 @@ public class Start
   private String title= "Infinity Maze";
   private String authors= "By: Justin, Michael, Josh, and Jacob";
   
-  public start
+  public Start()
   {
     setBackground(Color.WHITE);
 		setVisible(true);
   }
-  public void run
+  public void run()
   {
     graphToBack.setColor(Color.BLACK);
 		graphToBack.drawString(title, 400, 295);      //first int is x direction
 		graphToBack.drawString(authors, 400, 305);
   }
 }
+g
