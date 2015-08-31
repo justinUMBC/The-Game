@@ -1,4 +1,4 @@
-import java.swing.*;
+import javax.swing.*;
 import java.awt.*;
 
 //Impossible Maze Game
