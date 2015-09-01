@@ -38,6 +38,7 @@ public class Game extends Canvas implements Runnable
 		}
 	}
 	
+	//DO NOT TOUCH!!!
 	public void run()
 	{
 		long lastTime = System.nanoTime();
