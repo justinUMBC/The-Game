@@ -1,0 +1,14 @@
+
+public abstract class GameObject
+{
+	protected int x, y, velX, velY;
+	
+	public void setX(int n)
+	{
+		this.x = n;
+	}
+	public void setY(int n)
+	{
+		this.y = n;
+	}
+}
