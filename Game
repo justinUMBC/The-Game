@@ -13,7 +13,8 @@ public class Game extends Canvas implements Runnable
 	final int WIDTH = 720, HEIGHT = 540;
 	private Thread thread;
 	Handler handler;
-	public int frames;
+	//public int frames;
+	public Integer frames;
 	
 	private boolean running = false;
 	
@@ -115,6 +116,9 @@ public class Game extends Canvas implements Runnable
 		g.drawString("The Game", 600, 50);
 		g.setColor(Color.WHITE);
 		// add frames/sec here
+		g.drawString("FPS:", 600, 80);
+		g.drawString(frames.toString(), 630, 80);
+		
 		g.dispose();
 		bs.show();
 	}
