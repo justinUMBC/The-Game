@@ -1,39 +1,56 @@
 import java.awt.Graphics;
-import java.util.LinkedList;
 
+public abstract class GameObject {
+	protected int x, y, velX, velY;
+	protected ID id;
 
-public class Handler
-{
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
-	
-	public void tick()
-	{
-		for(int i = 0; i < object.size(); i ++)
-		{
-			GameObject temp = object.get(i);
-			
-			temp.tick();
-		}
-		
+	public GameObject(int x, int y, ID id) {
+		this.x = x;
+		this.y = y;
+		this.id = id;
 	}
-	public void render(Graphics g)
-	{
-		for(int i = 0; i < object.size(); i ++)
-		{
-			GameObject temp = object.get(i);
-			
-			temp.render(g);
-		}
+
+	public abstract void tick();
+
+	public abstract void render(Graphics g);
+
+	public void setX(int n) {
+		this.x = n;
 	}
-	
-	public void add(GameObject n)
-	{
-		this.object.add(n);
+
+	public void setY(int n) {
+		this.y = n;
 	}
-	public void delete(GameObject n)
-	{
-		this.object.remove(n);
+
+	public void setVelX(int n) {
+		this.velX = n;
 	}
-	
-	
+
+	public void setVelY(int n) {
+		this.velY = n;
+	}
+
+	public void setID(ID n) {
+		this.id = n;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getVelX() {
+		return velX;
+	}
+
+	public int getVelY() {
+		return velY;
+	}
+
+	public ID getID() {
+		return id;
+	}
 }
