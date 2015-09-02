@@ -11,14 +11,26 @@ public class Game extends Canvas implements Runnable
 
 	final int WIDTH = 640, HEIGHT = 640/12 *9;
 	private Thread thread;
+	Handler handler;
 	
 	private boolean running = false;
 	
+	Player user;
+	Path path;
 	
 	public Game()
-	{
+	{	//add anything new to this method
+		
+		handler = new Handler();
+		this.addKeyListener(new KeyInput(handler));
 		
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
+		
+		user = new Player(100, 100, ID.Dynamic);
+		path = new Path(90, 80, ID.Static);
+		
+		handler.add(user);
+		handler.add(path);
 		
 	}
 	
@@ -73,7 +85,7 @@ public class Game extends Canvas implements Runnable
 	
 	public void tick()
 	{
-		
+		handler.tick();
 	}
 	
 	public void render()
@@ -89,6 +101,8 @@ public class Game extends Canvas implements Runnable
 		
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		handler.render(g);
 		
 		g.dispose();
 		bs.show();
