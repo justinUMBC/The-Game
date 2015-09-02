@@ -1,1 +1,25 @@
 // creates a black path on the white background
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+public class Path extends GameObject{
+
+	public Path(int x, int y, ID id) {
+		super(x, y, id);
+		
+	}
+	
+	public void tick()
+	{
+		
+	}
+
+	
+	public void render(Graphics g)
+	{
+		g.setColor(Color.BLACK);		//this is a test
+		g.fillRect(x, y, 40, 160);
+	}
+
+}
