@@ -10,9 +10,10 @@ public class Game extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = -1836269745511707098L;
 
-	final int WIDTH = 720, HEIGHT = WIDTH/12 * 9;		//640 x 480
+	final int WIDTH = 720, HEIGHT = 540;
 	private Thread thread;
 	Handler handler;
+	public int frames;
 	
 	private boolean running = false;
 	
@@ -25,6 +26,7 @@ public class Game extends Canvas implements Runnable
 		this.addKeyListener(new KeyInput(handler));
 		
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
+		
 		
 		user = new Player(100, 0, ID.Dynamic);
 		Path path1 = new Path(90, 0, ID.Path);
@@ -61,7 +63,7 @@ public class Game extends Canvas implements Runnable
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
-		int frames = 0;
+		frames = 0;
 		while(running)
 		{
 			long now = System.nanoTime();
@@ -107,6 +109,12 @@ public class Game extends Canvas implements Runnable
 		
 		handler.render(g);
 		
+		g.setColor(Color.BLUE);
+		g.fillRect(540, 0, 180 , HEIGHT);
+		g.setColor(Color.WHITE);
+		g.drawString("The Game", 600, 50);
+		g.setColor(Color.WHITE);
+		// add frames/sec here
 		g.dispose();
 		bs.show();
 	}
