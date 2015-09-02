@@ -1,1 +1,26 @@
 //Creates the object that the player controls
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+public class Player extends GameObject{
+
+	public Player(int x, int y, ID id)
+	{
+		super(x, y, id);
+	}
+
+	public void tick()
+	{
+		x += velX;
+		y += velY;
+	}
+
+	
+	public void render(Graphics g)
+	{
+		g.setColor(Color.RED);		//this is a test
+		g.fillOval(x, y, 20, 20);
+	}
+
+}
