@@ -2,25 +2,37 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+public class Player extends GameObject {
 
-public class Player extends GameObject{
-
-	public Player(int x, int y, ID id)
-	{
+	public Player(int x, int y, ID id) {
 		super(x, y, id);
 	}
 
 	public void tick()
 	{
+		if(this.x == 0 || this.x == 530)
+		{
+			velX = 0;
+			if(this.x == 0)
+				setX(10);
+			else
+				setX(520);
+		}
+		if(this.y == 0 || this.y == 500)
+		{
+			velY = 0;
+			if(this.y == 0)
+				setY(10);
+			else
+				setY(490);
+		}
 		x += velX;
 		y += velY;
 	}
 
-	
-	public void render(Graphics g)
-	{
-		g.setColor(Color.RED);		//this is a test
-		g.fillOval(x, y, 20, 20);
+	public void render(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillOval(x, y, 10, 10);
 	}
 
 }
