@@ -10,20 +10,20 @@ public class Player extends GameObject {
 
 	public void tick()
 	{
-		if(this.x == 0 || this.x == 530)
+		if(this.x <= 0 || this.x >= 530)
 		{
 			velX = 0;
-			if(this.x == 0)
+			if(this.x <= 0)
 				setX(10);
 			else
 				setX(520);
 		}
-		if(this.y == 0 || this.y == 500)
+		if(this.y <= 0 || this.y >= 500)
 		{
 			velY = 0;
-			if(this.y == 0)
+			if(this.y <= 0)
 				setY(10);
-			else
+			else 
 				setY(490);
 		}
 		x += velX;
