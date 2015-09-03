@@ -10,7 +10,7 @@ public class Game extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = -1836269745511707098L;
 
-	final int WIDTH = 720, HEIGHT = 540;
+	final int WIDTH = 700, HEIGHT = 525;
 	private Thread thread;
 	Handler handler;
 	//public int frames;
@@ -29,15 +29,18 @@ public class Game extends Canvas implements Runnable
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
 		
 		
-		user = new Player(100, 0, ID.Dynamic);
+		user = new Player(57, 0, ID.Dynamic);
 		Path path1 = new Path(90, 0, ID.Path);
 		Path path2 = new Path(90, 160, 400, 25);
 		
+		Nothing start = new Nothing(1);
 		//be sure to add paths before adding user
-		handler.add(path1);
-		handler.add(path2);
-		handler.add(user);
+		//handler.add(path1);
+		//handler.add(path2);
 		
+		handler.add(start);
+		start.level1();
+		handler.add(user);
 	}
 	
 	public synchronized void start()
@@ -127,5 +130,12 @@ public class Game extends Canvas implements Runnable
 	public static void main(String args[])
 	{
 		new Game();
+	}
+	
+	public static int clamp(int var, int max, int min)
+	{
+		if(var >= max) return var = max;
+		else if(var <= min) return var = min;
+		else return var;
 	}
 }
