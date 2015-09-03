@@ -29,18 +29,20 @@ public class Game extends Canvas implements Runnable
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
 		
 		
-		user = new Player(57, 0, ID.Dynamic);
-		Path path1 = new Path(90, 0, ID.Path);
-		Path path2 = new Path(90, 160, 400, 25);
+		user = new Player(32, 0, ID.Dynamic);
 		
-		Nothing start = new Nothing(1);
+		//Path path1 = new Path(90, 0, ID.Path);
+		//Path path2 = new Path(90, 160, 400, 25);
+		
+		Nothing nothingness = new Nothing(Color.BLACK);
 		//be sure to add paths before adding user
 		//handler.add(path1);
 		//handler.add(path2);
 		
-		handler.add(start);
-		start.level1();
+		handler.add(nothingness);
+		nothingness.run();
 		handler.add(user);
+		//if user touches endblock, nothingness.nextLevel();
 	}
 	
 	public synchronized void start()
