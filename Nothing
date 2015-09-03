@@ -1,0 +1,66 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+public class Nothing extends GameObject{
+	private int [][] arr = new int [21][21];
+	private int level;
+	
+	public Nothing(int x, int y, ID id)
+	{
+		super(x, y, id);
+		
+	}
+	public Nothing(int level)
+	{
+		super(0,0,ID.Static);
+		this.level = level;
+		this.clear();
+		this.level1();
+	}
+
+	public void tick()
+	{
+		
+	}
+
+	public void render(Graphics g)
+	{
+		g.setColor(Color.BLACK);
+		for(int r = 0; r < arr.length; r ++)
+		{
+			for(int c = 0; c < arr[r].length; c ++)
+			{
+				if(arr[r][c] == 1)
+				{
+					g.fillRect(r*25,c*25,25,25);
+				}
+			}
+		}
+		
+	}
+	public void clear()
+	{
+		for(int r = 0; r < arr.length; r ++)
+		{
+			for(int c = 0; c < arr[r].length; c ++)
+			{
+				arr[r][c] = 0;
+			}
+		}
+	}
+	public void level1()
+	{
+		//sets all to 0 (nothing there)
+		this.clear();
+		
+		arr[2][0] = 1;
+		arr[2][1] = 1;
+		arr[2][2] = 1;
+		arr[2][3] = 1;
+		arr[2][4] = 1;
+		arr[3][4] = 1;
+		arr[4][4] = 1;
+		arr[5][4] = 1;
+	}
+}
