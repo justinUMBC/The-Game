@@ -5,18 +5,22 @@ import java.awt.Graphics;
 public class Nothing extends GameObject{
 	private int [][] arr = new int [21][21];
 	private int level;
+	private Color col;
 	
-	public Nothing(int x, int y, ID id)
+	public Nothing(int x, int y, ID id, Color col)
 	{
 		super(x, y, id);
+		this.col = col;
 		
 	}
-	public Nothing(int level)
+	public Nothing(Color col)
 	{
 		super(0,0,ID.Static);
-		this.level = level;
 		this.clear();
-		this.level1();
+	}
+	public Nothing(int r, int c)
+	{
+		super(r*25, c*25, ID.Static);
 	}
 
 	public void tick()
@@ -28,33 +32,44 @@ public class Nothing extends GameObject{
 	{
 		g.setColor(Color.BLACK);
 		for(int r = 0; r < arr.length; r ++)
-		{
 			for(int c = 0; c < arr[r].length; c ++)
-			{
 				if(arr[r][c] == 1)
-				{
 					g.fillRect(r*25,c*25,25,25);
-				}
-			}
-		}
-		
 	}
+	
+	public void setLevel(int n)
+	{
+		this.level = n;
+	}
+	public void nextLevel()
+	{
+		level ++;
+	}
+	
+	public void run()
+	{
+		level = 1;
+		if(level == 1)	level1();
+		else if(level == 2)	level2();
+		//else if(level == 3) level3();
+		//else if(level == 4) level4();
+		//else if(level == 5) level5();
+	}
+	
 	public void clear()
 	{
 		for(int r = 0; r < arr.length; r ++)
-		{
 			for(int c = 0; c < arr[r].length; c ++)
-			{
 				arr[r][c] = 0;
-			}
-		}
 	}
+	
 	public void level1()
 	{
 		//sets all to 0 (nothing there)
 		this.clear();
 		
-		arr[2][0] = 1;
+		arr[1][0] = 1;
+		arr[1][1] = 1;
 		arr[2][1] = 1;
 		arr[2][2] = 1;
 		arr[2][3] = 1;
@@ -62,5 +77,12 @@ public class Nothing extends GameObject{
 		arr[3][4] = 1;
 		arr[4][4] = 1;
 		arr[5][4] = 1;
+	}
+	public void level2()
+	{
+		//sets all to 0 (nothing there)
+		this.clear();
+		
+		arr[1][0] = 1;
 	}
 }
