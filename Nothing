@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 
 public class Nothing extends GameObject{
-	private int [][] arr = new int [21][21];
+	
+	private int [][] arr;
+	
 	private int level;
 	
 	private ArrayList<Wall> theWalls;
@@ -16,14 +18,26 @@ public class Nothing extends GameObject{
 	{
 		super(x, y, id);
 		
+		theWalls = new ArrayList<Wall>(441);
+		
+		arr = new int [21][21];
+		
 	}
 	
 	public Nothing(int level)
 	{
 		super(0,0,ID.Static);
 		this.level = level;
-		this.clear();
+		//this.clear();
+		
+		arr = new int [21][21];
 		this.level1();
+		
+		
+		
+		
+	
+		theWalls = new ArrayList<Wall>(441);
 	}
 
 	
@@ -42,6 +56,10 @@ public class Nothing extends GameObject{
 		return theWalls;
 	}
 	
+	public Wall getTheWallAt(int x)
+	{
+		return theWalls.get(x);
+	}
 	
 	public void render(Graphics g)
 	{
@@ -68,12 +86,38 @@ public class Nothing extends GameObject{
 			}
 		}
 	}
+	
+	
+	
+	private void clearArrayList()
+	{
+		theWalls.clear();
+	
+	
+	
+	}
+	
+	
+	
+	private ArrayList<Wall> generateLevel()
+	{
+		this.clearArrayList();
+		
+		
+		return null;
+		
+	}
+	
+	
+	
+	
+	
 	public void level1()
 	{
 		//sets all to 0 (nothing there)
-		this.clear();
+		//this.clear();
 		
-		theWalls = new ArrayList<Wall>(441);
+		theWalls = new ArrayList<Wall>(2);
 		
 		
 		
