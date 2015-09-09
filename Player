@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 public class Player extends GameObject 
 {
 
-	public int deathCount = 0;
+	public Integer deathCount = 0;
 	
 	
 	
@@ -33,8 +33,16 @@ public class Player extends GameObject
 	
 	private void updateRekt(int x, int y)
 	{
-		playerRekt = new Rectangle(x,y, 8, 8);
+		playerRekt.setLocation(x,y);
 	}
+	
+	public void resetPlayer()
+	{
+		this.x = 57;
+		this.y = 0;		
+	}
+	
+	
 	
 	public void addDeath()
 	{
@@ -48,7 +56,7 @@ public class Player extends GameObject
 		x = Game.clamp(x,530,-1);
 		y = Game.clamp(y,487,-1);
 	
-	    this.updateRekt(x, y);
+	    this.updateRekt(this.x, this.y);
 	    
 	   // if (this.getPlayerRekt().intersects())
 	
@@ -58,6 +66,10 @@ public class Player extends GameObject
 	{
 		g.setColor(Color.RED);
 		g.fillOval(x, y, 10, 10);
+		
+		g.setColor(Color.BLACK);
+		g.drawString("Deaths:", 400, 80);
+		g.drawString(deathCount.toString(), 450, 80);
 	}
 
 }
