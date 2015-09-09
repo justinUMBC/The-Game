@@ -28,6 +28,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	private boolean running = false;
 	private BufferedImage image;
 	
+	private boolean collision = false;
+	
 	Player user;
 	
 	public Game() 
@@ -122,11 +124,32 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		//if (user.getPlayerRekt().intersects())
 	
-	   for (int x = 0; x < start.getTheWalls().size(); x++)
+	   for (int x = 0; x < 2; x++)
 	   {
+		  if (this.start.getTheWallAt(x) != null)
+		  {
 		   
+		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()));
+		     {     
+		      this.collision = true;
+		     }
+		  }
+		  
+	    if (collision)
+	    {
+	    	user.addDeath();
+	    	//user.resetPlayer();
+	    	
+	    }
+	   
+	    collision = false;
 	   }
+	   
+	   
+	
 	}
+	
+	
 	
 	public void render()
 	{
