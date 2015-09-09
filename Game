@@ -1,12 +1,19 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 //this method will hold all aspects of the game
 
 
-public class Game extends Canvas implements Runnable
+public class Game extends Canvas  implements Runnable, ImageObserver
 {
 	private static final long serialVersionUID = -1836269745511707098L;
 
@@ -16,11 +23,14 @@ public class Game extends Canvas implements Runnable
 	//public int frames;
 	public Integer frames;
 	
+	private Nothing start;
+	
 	private boolean running = false;
+	private BufferedImage image;
 	
 	Player user;
 	
-	public Game()
+	public Game() 
 	{	//add anything new to this method
 		
 		handler = new Handler();
@@ -29,21 +39,32 @@ public class Game extends Canvas implements Runnable
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
 		
 		
-		user = new Player(32, 0, ID.Dynamic);
 		
-		//Path path1 = new Path(90, 0, ID.Path);
-		//Path path2 = new Path(90, 160, 400, 25);
+		user = new Player(57, 0, ID.Dynamic);
+		Path path1 = new Path(90, 0, ID.Path);
+		Path path2 = new Path(90, 160, 400, 25);
 		
-		Nothing nothingness = new Nothing(Color.BLACK);
+		start = new Nothing(1);
 		//be sure to add paths before adding user
 		//handler.add(path1);
 		//handler.add(path2);
 		
-		handler.add(nothingness);
-		nothingness.run();
+		handler.add(start);
+		start.level1();
+		
+		
+		
 		handler.add(user);
-		//if user touches endblock, nothingness.nextLevel();
+	
+			    	
+	
 	}
+	
+	//image gen - WiP
+	
+	
+	
+	
 	
 	public synchronized void start()
 	{
@@ -98,16 +119,27 @@ public class Game extends Canvas implements Runnable
 	public void tick()
 	{
 		handler.tick();
+		
+		//if (user.getPlayerRekt().intersects())
+	
+	   for (int x = 0; x < start.getTheWalls().size(); x++)
+	   {
+		   
+	   }
 	}
 	
 	public void render()
 	{
+		//BufferedImage bs = new BufferedImage(1,1,1);
+		
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null)
 		{
 			this.createBufferStrategy(3);
 			return;
 		}
+		
+		//Graphics g = bs.getGraphics();
 		
 		Graphics g = bs.getDrawGraphics();
 		
@@ -126,6 +158,7 @@ public class Game extends Canvas implements Runnable
 		g.drawString(frames.toString(), 630, 80);
 		
 		g.dispose();
+		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
 		bs.show();
 	}
 	
@@ -133,6 +166,11 @@ public class Game extends Canvas implements Runnable
 	{
 		new Game();
 	}
+	
+	
+	
+	
+	
 	
 	public static int clamp(int var, int max, int min)
 	{
