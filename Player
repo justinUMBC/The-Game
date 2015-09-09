@@ -1,6 +1,7 @@
 //Creates the object that the player controls
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Player extends GameObject 
 {
@@ -9,13 +10,36 @@ public class Player extends GameObject
 	
 	
 	
+	
+	private Rectangle playerRekt;
+	
+	
 	public Player(int x, int y, ID id) 
 	{
 		super(x, y, id);
+	    
+		//xCor = 1;
+		//yCor = 0;			
+		
+		playerRekt = new Rectangle(x,y, 8, 8); 
 	}
 
 	
 	
+	public Rectangle getPlayerRekt()
+	{
+		return playerRekt;
+	}
+	
+	private void updateRekt(int x, int y)
+	{
+		playerRekt = new Rectangle(x,y, 8, 8);
+	}
+	
+	public void addDeath()
+	{
+		deathCount++;
+	}
 	
 	public void tick()
 	{
@@ -23,9 +47,15 @@ public class Player extends GameObject
 		y += velY;
 		x = Game.clamp(x,530,-1);
 		y = Game.clamp(y,487,-1);
+	
+	    this.updateRekt(x, y);
+	    
+	   // if (this.getPlayerRekt().intersects())
+	
 	}
 
-	public void render(Graphics g) {
+	public void render(Graphics g) 
+	{
 		g.setColor(Color.RED);
 		g.fillOval(x, y, 10, 10);
 	}
