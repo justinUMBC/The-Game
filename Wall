@@ -1,0 +1,30 @@
+import java.awt.Rectangle;
+
+
+public class Wall 
+{
+
+	private Rectangle rekt;
+	
+	public Wall(int x, int y)
+	{				
+	 
+	
+	 rekt = new Rectangle(x, y, 25, 25);
+	
+	}
+
+
+  
+	
+	
+	public Rectangle getRekt()
+	{
+		return rekt;				
+	}
+
+
+
+
+
+}
