@@ -42,7 +42,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		
-		user = new Player(57, 0, ID.Dynamic);
+		user = new Player(32, 0, ID.Dynamic);
 		Path path1 = new Path(90, 0, ID.Path);
 		Path path2 = new Path(90, 160, 400, 25);
 		
@@ -129,7 +129,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		  if (this.start.getTheWallAt(x) != null)
 		  {
 		   
-		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()));
+		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()))
 		     {     
 		      this.collision = true;
 		     }
@@ -138,7 +138,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	    if (collision)
 	    {
 	    	user.addDeath();
-	    	//user.resetPlayer();
+	    	user.resetPlayer();
 	    	
 	    }
 	   
