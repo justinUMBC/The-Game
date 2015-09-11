@@ -22,13 +22,13 @@ public class KeyInput extends KeyAdapter {
 				if (temp.getID() == ID.Dynamic)
 				{
 					// key events for the moveable object
-				if (key == KeyEvent.VK_UP)
+				if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
 					temp.setVelY(-3);
-				if (key == KeyEvent.VK_DOWN)
+				if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
 					temp.setVelY(3);
-				if (key == KeyEvent.VK_RIGHT)
+				if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
 					temp.setVelX(3);
-				if (key == KeyEvent.VK_LEFT)
+				if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
 					temp.setVelX(-3);
 				}
 			}
@@ -43,13 +43,13 @@ public class KeyInput extends KeyAdapter {
 			GameObject temp = handler.object.get(i);
 			if (temp.getID() == ID.Dynamic) {
 				// key events for the moveable object
-				if (key == KeyEvent.VK_UP)
+				if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
 					temp.setVelY(0);
-				if (key == KeyEvent.VK_DOWN)
+				if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
 					temp.setVelY(0);
-				if (key == KeyEvent.VK_RIGHT)
+				if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
 					temp.setVelX(0);
-				if (key == KeyEvent.VK_LEFT)
+				if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
 					temp.setVelX(0);
 			}
 		}
