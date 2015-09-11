@@ -12,6 +12,8 @@ public class Nothing extends GameObject{
 	
 	private ArrayList<Wall> theWalls;
 	
+	private int[] wallData;
+	
 	
 	
 	public Nothing(int x, int y, ID id)
@@ -21,6 +23,8 @@ public class Nothing extends GameObject{
 		theWalls = new ArrayList<Wall>(441);
 		
 		arr = new int [21][21];
+		
+		
 		
 	}
 	
@@ -63,27 +67,31 @@ public class Nothing extends GameObject{
 	
 	public void render(Graphics g)
 	{
+		
+		
 		g.setColor(Color.BLACK);
-		for(int r = 0; r < arr.length; r ++)
+	
+		for (int x = 0; x < wallData.length ; x++)
 		{
-			for(int c = 0; c < arr[r].length; c ++)
+			if(wallData[x] == 0)
 			{
-				if(arr[r][c] == 1)
-				{
-					g.fillRect(r*25,c*25,25,25);
-				}
+				int posX = 0;
+				int posY = 0;
+				
+				posX = (x / 20) *25;
+				
+				posY = (x / 20)*25;
+				
+				g.fillRect(posX, posY, 25, 25);
 			}
 		}
 		
 	}
 	public void clear()
 	{
-		for(int r = 0; r < arr.length; r ++)
+		for(int x = 0; x < wallData.length; x++)
 		{
-			for(int c = 0; c < arr[r].length; c ++)
-			{
-				arr[r][c] = 0;
-			}
+		  wallData[x] = 0;
 		}
 	}
 	
@@ -91,17 +99,43 @@ public class Nothing extends GameObject{
 	
 	private void clearArrayList()
 	{
-		theWalls.clear();
-	
-	
-	
+		theWalls.clear();			
 	}
 	
+	
+	private void fillArray()
+	{
+		for (int x = 0; x < wallData.length; x++)
+		{
+			if (wallData[x] != 0 && wallData[x] != 2)
+			{
+				wallData[x] = 1;
+			}
+		}
+	}
 	
 	
 	private ArrayList<Wall> generateLevel()
 	{
+		
+		int posX = 0;
+		int posY = 0;
+		
 		this.clearArrayList();
+		this.clear();
+		
+		for (int x = 0; x < wallData.length; x++)
+		{
+			if (wallData[x] == 1)
+			{								
+					posX = (x / 20) *25;
+												
+					posY = (x / 20)*25;
+				
+				
+				theWalls.add(x, new Wall(posX, posY));
+			}
+		}
 		
 		
 		return null;
@@ -112,17 +146,30 @@ public class Nothing extends GameObject{
 	
 	
 	
+	
 	public void level1()
 	{
 		//sets all to 0 (nothing there)
 		//this.clear();
 		
-		theWalls = new ArrayList<Wall>(2);
+		wallData = new int[440];
+		
+		wallData[1] = 0;
+		wallData[22] = 0;
+		wallData[43] = 0;
+		wallData[44] = 0;
+		wallData[45] = 0;
+		wallData[46] = 2;
+		
+		this.fillArray();
 		
 		
 		
-		theWalls.add(new Wall(0,0));
-		theWalls.add(new Wall(25,0));
+		theWalls = new ArrayList<Wall>(440);
+		
+		
+		
+		this.generateLevel();
 		
 		
 		arr[2][0] = 1;
