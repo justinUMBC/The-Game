@@ -124,7 +124,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		//if (user.getPlayerRekt().intersects())
 	
-	   for (int x = 0; x < 2; x++)
+	   for (int x = 0; x < start.getTheWallsLength() ; x++)
 	   {
 		  if (this.start.getTheWallAt(x) != null)
 		  {
