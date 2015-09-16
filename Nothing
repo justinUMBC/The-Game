@@ -78,11 +78,16 @@ public class Nothing extends GameObject{
 				int posX = 0;
 				int posY = 0;
 				
-				posX = (x / 20) *25;
+				posY = (x / 21);
 				
-				posY = (x / 20)*25;
+				posX = (x / 20);
 				
-				g.fillRect(posX, posY, 25, 25);
+				if(posX != 0)
+				{
+					posX--;
+				}
+				
+				g.fillRect(posX * 25, posY * 25, 25, 25);
 			}
 		}
 		
@@ -91,7 +96,7 @@ public class Nothing extends GameObject{
 	{
 		for(int x = 0; x < wallData.length; x++)
 		{
-		  wallData[x] = 0;
+		  wallData[x] = 1;
 		}
 	}
 	
@@ -102,6 +107,10 @@ public class Nothing extends GameObject{
 		theWalls.clear();			
 	}
 	
+	public int getTheWallsLength()
+	{
+		return theWalls.size();
+	}
 	
 	private void fillArray()
 	{
@@ -115,7 +124,7 @@ public class Nothing extends GameObject{
 	}
 	
 	
-	private ArrayList<Wall> generateLevel()
+	private void generateLevel()
 	{
 		
 		int posX = 0;
@@ -128,17 +137,21 @@ public class Nothing extends GameObject{
 		{
 			if (wallData[x] == 1)
 			{								
-					posX = (x / 20) *25;
+					posY = (x / 21);
 												
-					posY = (x / 20)*25;
+					posX = (x / 20);
+					
+					if(posX != 0)
+					{
+						posX--;
+					}
 				
 				
-				theWalls.add(x, new Wall(posX, posY));
+				theWalls.add(new Wall(posX * 25 , posY * 25));
 			}
 		}
 		
 		
-		return null;
 		
 	}
 	
@@ -150,9 +163,12 @@ public class Nothing extends GameObject{
 	public void level1()
 	{
 		//sets all to 0 (nothing there)
-		//this.clear();
+		
 		
 		wallData = new int[440];
+		
+		this.clear();
+		
 		
 		wallData[1] = 0;
 		wallData[22] = 0;
@@ -165,20 +181,13 @@ public class Nothing extends GameObject{
 		
 		
 		
-		theWalls = new ArrayList<Wall>(440);
+		theWalls = new ArrayList<Wall>();
 		
 		
 		
 		this.generateLevel();
 		
 		
-		arr[2][0] = 1;
-		arr[2][1] = 1;
-		arr[2][2] = 1;
-		arr[2][3] = 1;
-		arr[2][4] = 1;
-		arr[3][4] = 1;
-		arr[4][4] = 1;
-		arr[5][4] = 1;
+		
 	}
 }
