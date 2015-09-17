@@ -20,7 +20,7 @@ public class Nothing extends GameObject{
 	{
 		super(x, y, id);
 		
-		theWalls = new ArrayList<Wall>(441);
+		//theWalls = new ArrayList<Wall>();
 		
 		arr = new int [21][21];
 		
@@ -69,29 +69,16 @@ public class Nothing extends GameObject{
 	{
 		
 		
-		g.setColor(Color.BLACK);
+		g.setColor(Color.WHITE);
 	
-		for (int x = 0; x < wallData.length ; x++)
+		for (int x = 0; x < theWalls.size(); x++)
 		{
-			if(wallData[x] == 0)
-			{
-				int posX = 0;
-				int posY = 0;
 				
-				posY = (x / 21);
-				
-				posX = (x / 20);
-				
-				if(posX != 0)
-				{
-					posX--;
-				}
-				
-				g.fillRect(posX * 25, posY * 25, 25, 25);
+				g.fillRect(theWalls.get(x).getX(), theWalls.get(x).getY(), 25, 25);
 			}
 		}
 		
-	}
+	
 	public void clear()
 	{
 		for(int x = 0; x < wallData.length; x++)
@@ -183,9 +170,16 @@ public class Nothing extends GameObject{
 		
 		theWalls = new ArrayList<Wall>();
 		
+		theWalls.add(new Wall(0,0));
+		theWalls.add(new Wall(0,25));
+		theWalls.add(new Wall(0,50));
+		theWalls.add(new Wall(50,0));
+		theWalls.add(new Wall(50,25));
 		
 		
-		this.generateLevel();
+		//this.generateLevel();
+		
+		
 		
 		
 		
