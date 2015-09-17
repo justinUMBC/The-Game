@@ -4,6 +4,9 @@ import java.awt.Rectangle;
 public class Wall 
 {
 
+    private int xPos;
+    private int yPos;
+    
 	private Rectangle rekt;
 	
 	public Wall(int x, int y)
@@ -12,6 +15,9 @@ public class Wall
 	
 	 rekt = new Rectangle(x, y, 25, 25);
 	
+	 xPos = x;
+	 yPos = y;
+	 
 	}
 
 
@@ -24,7 +30,15 @@ public class Wall
 	}
 
 
+	public int getX()
+	{
+		return xPos;
+	}
 
+	public int getY()
+	{
+		return yPos;
+	}
 
 
 }
