@@ -1,7 +1,12 @@
 //Creates the object that the player controls
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RectangularShape;
+
 
 public class Player extends GameObject 
 {
@@ -11,35 +16,42 @@ public class Player extends GameObject
 	
 	
 	
-	private Rectangle playerRekt;
+	private Rectangle rekt;
+	private Rectangle2D playerRekt;
+	private Dimension dim;
 	
 	
 	public Player(int x, int y, ID id) 
 	{
 		super(x, y, id);
 	    
+		dim = new Dimension(8,8);
+		
+		rekt = new Rectangle(x,y,25,25);
 		//xCor = 1;
 		//yCor = 0;			
 		
-		playerRekt = new Rectangle(x,y, 8, 8); 
+		playerRekt = rekt; 
 	}
 
 	
 	
-	public Rectangle getPlayerRekt()
+	public Area getPlayerRekt()
 	{
-		return playerRekt;
+		return new Area(playerRekt);
 	}
 	
-	private void updateRekt(int x, int y)
+	private void updateRekt(double x, double y)
 	{
-		playerRekt.setLocation(x,y);
+		playerRekt.setFrame(x,y,8.0,8.0);
 	}
 	
 	public void resetPlayer()
 	{
-		this.x = 57;
-		this.y = 0;		
+		this.x = 32;
+		this.y = 0;	
+		this.velX = 0;
+		this.velY = 0;
 	}
 	
 	
@@ -56,20 +68,25 @@ public class Player extends GameObject
 		x = Game.clamp(x,530,-1);
 		y = Game.clamp(y,487,-1);
 	
-	    this.updateRekt(this.x, this.y);
+	    this.updateRekt((double)this.x, (double)this.y);
 	    
 	   // if (this.getPlayerRekt().intersects())
 	
 	}
 
+	public void displayDeathCount(Graphics g)
+	{
+		g.setColor(Color.WHITE);
+		g.drawString("Deaths:", 600, 130);
+		g.drawString(deathCount.toString(), 650, 130);
+	}
+	
 	public void render(Graphics g) 
 	{
 		g.setColor(Color.RED);
 		g.fillOval(x, y, 10, 10);
 		
-		g.setColor(Color.BLACK);
-		g.drawString("Deaths:", 400, 80);
-		g.drawString(deathCount.toString(), 450, 80);
+		
 	}
 
 }
