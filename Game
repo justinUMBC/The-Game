@@ -124,6 +124,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		//if (user.getPlayerRekt().intersects())
 	
+		
 	   for (int x = 0; x < start.getTheWallsLength() ; x++)
 	   {
 		  if (this.start.getTheWallAt(x) != null)
@@ -166,10 +167,13 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.WHITE);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		handler.render(g);
+		
+		start.level1();
+		user.render(g);
 		
 		g.setColor(Color.BLUE);
 		g.fillRect(540, 0, 180 , HEIGHT);
@@ -179,6 +183,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		// add frames/sec here
 		g.drawString("FPS:", 600, 80);
 		g.drawString(frames.toString(), 630, 80);
+		
+		user.displayDeathCount(g);
 		
 		g.dispose();
 		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
