@@ -74,11 +74,22 @@ public class Nothing extends GameObject{
 		for (int x = 0; x < theWalls.size(); x++)
 		{
 				
-				g.fillRect(theWalls.get(x).getX(), theWalls.get(x).getY(), 25, 25);
-			}
+			   if (!theWalls.get(x).isAGoal())
+			   {
+			    g.fillRect(theWalls.get(x).getX(), theWalls.get(x).getY(), 25, 25);
+			   }
+		
+			   else if (theWalls.get(x).isAGoal())
+			   {
+				   g.setColor(Color.GREEN);
+				   g.fillRect(theWalls.get(x).getX(), theWalls.get(x).getY(), 25, 25);
+				   g.setColor(Color.WHITE);
+			   }
+		
+		     
 		}
 		
-	
+	}
 	public void clear()
 	{
 		for(int x = 0; x < wallData.length; x++)
@@ -131,6 +142,16 @@ public class Nothing extends GameObject{
 				
 				theWalls.add(new Wall(posX * 25 , posY * 25));
 			}
+		
+		    if (wallData[x] == 2)
+		    {
+		    	posY = (x / 21);
+				
+				posX = (x % 21);
+				
+				theWalls.add(new Goal(posX * 25, posY * 25));
+		    }
+		
 		}
 		
 		
