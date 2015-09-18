@@ -1,0 +1,15 @@
+public class Goal extends Wall
+{
+
+	public Goal(int x,int y)
+	{
+		super(x,y);
+	    
+	}
+	
+	
+	public boolean isAGoal()
+	{
+		return true;
+	}
+}
