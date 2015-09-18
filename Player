@@ -81,6 +81,19 @@ public class Player extends GameObject
 		g.drawString(deathCount.toString(), 650, 130);
 	}
 	
+	
+	public void displayVictoryMessage(Graphics g)
+	{
+		g.setColor(Color.GREEN);
+		g.drawString("Victory!", 600, 230);
+	}
+	
+	public void displayDeathMessage(Graphics g)
+	{
+		g.setColor(Color.RED);
+		g.drawString("You Lose! Good day ", 600, 230);
+	}
+	
 	public void render(Graphics g) 
 	{
 		g.setColor(Color.RED);
