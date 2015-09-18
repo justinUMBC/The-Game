@@ -29,6 +29,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	private BufferedImage image;
 	
 	private boolean collision = false;
+	private boolean victory = false;
 	
 	Player user;
 	
@@ -130,10 +131,16 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		  if (this.start.getTheWallAt(x) != null)
 		  {
 		   
-		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()))
+		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()) && !start.getTheWallAt(x).isAGoal())
 		     {     
 		      this.collision = true;
 		     }
+		  
+		    else if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()) && start.getTheWallAt(x).isAGoal())
+		     {     
+		      this.victory = true;
+		     }
+		  
 		  }
 		  
 	    if (collision)
@@ -143,6 +150,12 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	    	
 	    }
 	   
+	   if (victory)
+	   {
+		    
+	   }
+	    
+	    
 	    collision = false;
 	   }
 	   
@@ -172,11 +185,14 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		handler.render(g);
 		
+		
 		start.level1();
 		user.render(g);
 		
+		
+		
 		g.setColor(Color.BLUE);
-		g.fillRect(540, 0, 180 , HEIGHT);
+		g.fillRect(515, 0, 180 , HEIGHT);
 		g.setColor(Color.WHITE);
 		g.drawString("The Game", 600, 50);
 		g.setColor(Color.WHITE);
@@ -185,6 +201,11 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		g.drawString(frames.toString(), 630, 80);
 		
 		user.displayDeathCount(g);
+		
+		if(victory)
+		{
+			user.displayVictoryMessage(g);
+		}
 		
 		g.dispose();
 		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
