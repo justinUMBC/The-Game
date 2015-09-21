@@ -165,11 +165,7 @@ public class Nothing extends GameObject{
 	
 	public void level1()
 	{
-		//sets all to 0 (nothing there)
-		
-		
 		wallData = new int[440];
-		
 		this.clear();
 		
 		
@@ -182,18 +178,11 @@ public class Nothing extends GameObject{
 		
 		
 		
-		
 		theWalls = new ArrayList<Wall>();
-		
-		
-		
 		this.generateLevel();	
-		
 	}
 	public void level2()
 	{
-		
-		
 		wallData = new int[440];
 		this.clear();
 		
@@ -230,9 +219,65 @@ public class Nothing extends GameObject{
 		
 		
 		
+		theWalls = new ArrayList<Wall>();
+		this.generateLevel();		
+	}
+	public void level3()
+	{
+		wallData = new int[440];
+		this.clear();
+		
+		wallData[218] = 2;
+		wallData[1] = 0;	
+		for(int i = 1; i < 421; i+=21)
+			wallData[i] = 0;
+		for(int i = 1; i < 20; i++)
+			wallData[i] = 0;
+		for(int i = 19; i < 145; i+=21)
+			wallData[i] = 0;
+		for(int i = 108; i < 125; i++)
+			wallData[i] = 0;
+		for(int i = 400; i < 419; i++)
+			wallData[i] = 0;
+		for(int i = 334; i < 439; i+=21)
+			wallData[i] = 0;
+		for(int i = 108; i < 192; i+=21)
+			wallData[i] = 0;
+		wallData[172] = 0;
+		wallData[173] = 0;
+		wallData[152] = 0;
+		wallData[153] = 0;
+		wallData[154] = 0;
+		wallData[175] = 0;
+		wallData[176] = 0;
+		wallData[177] = 0;
+		wallData[156] = 0;
+		wallData[157] = 0;
+		wallData[158] = 0;
+		wallData[179] = 0;
+		wallData[180] = 0;
+		wallData[181] = 0;
+		wallData[160] = 0;
+		wallData[161] = 0;
+		wallData[162] = 0;
+		wallData[183] = 0;
+		wallData[184] = 0;
+		wallData[185] = 0;
+		wallData[164] = 0;
+		wallData[165] = 0;
+		for(int i = 166; i < 250; i+=21)
+			wallData[i] = 0;
+		for(int i = 223; i < 229; i++)
+			wallData[i] = 0;
+		for(int i = 223; i < 307; i+=21)
+			wallData[i] = 0;
+		for(int i = 282; i < 287; i++)
+			wallData[i] = 0;
+		wallData[261] = 0;
+		wallData[240] = 0;
 		
 		
 		theWalls = new ArrayList<Wall>();
-		this.generateLevel();		
+		this.generateLevel();	
 	}
 }
