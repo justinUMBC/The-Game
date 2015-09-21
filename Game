@@ -30,6 +30,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	
 	private boolean collision = false;
 	private boolean victory = false;
+	private Integer level = 1;
 	
 	Player user;
 	
@@ -53,8 +54,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		//handler.add(path2);
 		
 		handler.add(start);
-		start.level1();
-		
+		//start.level1();
+		this.runSetLevel();
 		
 		
 		handler.add(user);
@@ -131,7 +132,9 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		  if (this.start.getTheWallAt(x) != null)
 		  {
 		   
-		    if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()) && !start.getTheWallAt(x).isAGoal())
+		    this.victory = false;
+			  
+			  if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()) && !start.getTheWallAt(x).isAGoal())
 		     {     
 		      this.collision = true;
 		     }
@@ -139,6 +142,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		    else if(user.getPlayerRekt().intersects(start.getTheWallAt(x).getRekt()) && start.getTheWallAt(x).isAGoal())
 		     {     
 		      this.victory = true;
+		      user.resetPlayer();
 		     }
 		  
 		  }
@@ -152,7 +156,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	   
 	   if (victory)
 	   {
-		    
+		    this.level++;
 	   }
 	    
 	    
@@ -163,7 +167,16 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	
 	}
 	
-	
+	private void runSetLevel()
+	{
+		if (this.level == 1)
+			this.start.level1();
+		
+		if (this.level == 2)
+		{
+			start.level2();
+		}
+	}
 	
 	public void render()
 	{
@@ -186,7 +199,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		handler.render(g);
 		
 		
-		start.level1();
+		//start.level1();
+		this.runSetLevel();
 		user.render(g);
 		
 		
@@ -202,6 +216,9 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		user.displayDeathCount(g);
 		
+		g.drawString("Level:", 600, 120);
+		g.drawString(level.toString(), 650, 120);
+		
 		if(victory)
 		{
 			user.displayVictoryMessage(g);
@@ -210,6 +227,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		g.dispose();
 		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
 		bs.show();
+		
+		this.victory = false;
 	}
 	
 	public static void main(String args[])
