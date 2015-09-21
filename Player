@@ -77,15 +77,15 @@ public class Player extends GameObject
 	public void displayDeathCount(Graphics g)
 	{
 		g.setColor(Color.WHITE);
-		g.drawString("Deaths:", 600, 130);
-		g.drawString(deathCount.toString(), 650, 130);
+		g.drawString("Deaths:", 600, 150);
+		g.drawString(deathCount.toString(), 650, 150);
 	}
 	
 	
 	public void displayVictoryMessage(Graphics g)
 	{
 		g.setColor(Color.GREEN);
-		g.drawString("Victory!", 600, 230);
+		g.drawString("Victory!", 600, 220);
 	}
 	
 	public void displayDeathMessage(Graphics g)
