@@ -170,12 +170,15 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	private void runSetLevel()
 	{
 		if (this.level == 1)
-			this.start.level1();
+			start.level1();
 		
-		if (this.level == 2)
-		{
+		if (this.level == 2)		
 			start.level2();
-		}
+		
+		if (this.level == 3)
+			start.level3();
+		
+		
 	}
 	
 	public void render()
