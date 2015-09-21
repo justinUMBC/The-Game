@@ -180,25 +180,59 @@ public class Nothing extends GameObject{
 		wallData[45] = 0;
 		wallData[46] = 2;
 		
-		//this.fillArray();
 		
 		
 		
 		theWalls = new ArrayList<Wall>();
 		
-		/*
-		theWalls.add(new Wall(0,0));
-		theWalls.add(new Wall(0,25));
-		theWalls.add(new Wall(0,50));
-		theWalls.add(new Wall(50,0));
-		theWalls.add(new Wall(50,25));
-		*/
-		
-		this.generateLevel();
 		
 		
+		this.generateLevel();	
+		
+	}
+	public void level2()
+	{
+		
+		
+		wallData = new int[440];
+		this.clear();
+		
+		wallData[153] = 2;
+		wallData[1] = 0;
+		wallData[2] = 0;
+		wallData[3] = 0;
+		wallData[4] = 0;
+		wallData[25] = 0;
+		wallData[46] = 0;
+		wallData[22] = 0;
+		wallData[43] = 0;
+		wallData[64] = 0;
+		wallData[85] = 0;
+		for(int i = 106; i < 116; i++)
+			wallData[i] = 0;
+		wallData[90] = 0;
+		wallData[69] = 0;
+		wallData[48] = 0;
+		wallData[7] = 0;
+		wallData[8] = 0;
+		wallData[9] = 0;
+		wallData[50] = 0;
+		wallData[51] = 0;
+		for(int i = 10; i < 220; i+=21)
+			wallData[i] = 0;
+		for(int i = 193; i < 200; i++)
+			wallData[i] = 0;
+		wallData[155] = 0;
+		wallData[176] = 0;
+		wallData[172] = 0;
+		wallData[151] = 0;
+		wallData[152] = 0;
 		
 		
 		
+		
+		
+		theWalls = new ArrayList<Wall>();
+		this.generateLevel();		
 	}
 }
