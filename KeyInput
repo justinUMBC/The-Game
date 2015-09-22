@@ -3,6 +3,9 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 	private Handler handler;
+	
+	private int velX = 3;
+	private int velY = 3;
 
 	public KeyInput(Handler handler)
 	{
@@ -22,14 +25,17 @@ public class KeyInput extends KeyAdapter {
 				if (temp.getID() == ID.Dynamic)
 				{
 					// key events for the moveable object
+				 //temp.setVFX(level)
 				if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
-					temp.setVelY(-3);
+					temp.setVelY(-velY);
 				if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
-					temp.setVelY(3);
+					temp.setVelY(velY);
 				if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
-					temp.setVelX(3);
+					temp.setVelX(velX);
 				if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
-					temp.setVelX(-3);
+					temp.setVelX(-velX);
+				
+				
 				}
 			}
 		}
