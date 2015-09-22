@@ -285,20 +285,25 @@ public class Nothing extends GameObject{
 		wallData[185] = 0;
 		wallData[164] = 0;
 		wallData[165] = 0;
-		for(int i = 166; i < 250; i+=21)
-			wallData[i] = 0;
-		for(int i = 223; i < 229; i++)
-			wallData[i] = 0;
-		for(int i = 223; i < 307; i+=21)
-			wallData[i] = 0;
-		for(int i = 282; i < 287; i++)
-			wallData[i] = 0;
+		//for(int i = 166; i < 250; i+=21)
+			//wallData[i] = 0;
+		this.fillCol(166,250);
+		//for(int i = 223; i < 229; i++)
+		//	wallData[i] = 0;
+		this.fillRow(223,229);
+		//for(int i = 223; i < 307; i+=21)
+		//	wallData[i] = 0;
+		this.fillCol(223,307);
+		//for(int i = 282; i < 287; i++)
+		//	wallData[i] = 0;
+		this.fillRow(282,287);
 		wallData[261] = 0;
 		wallData[240] = 0;
 		wallData[217] = 0;
 		wallData[238] = 0;
-		for(int i = 255; i < 260; i++)
-			wallData[i] = 0;
+		//for(int i = 255; i < 260; i++)
+			//wallData[i] = 0;
+		this.fillRow(255,260);
 		wallData[276] = 0;
 		wallData[297] = 0;
 		wallData[318] = 0;
