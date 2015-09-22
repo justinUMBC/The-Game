@@ -2,11 +2,13 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -22,6 +24,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	Handler handler;
 	//public int frames;
 	public Integer frames;
+	
+	private ActionListener taskPerformer;
 	
 	private Nothing start;
 	
@@ -45,8 +49,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		user = new Player(32, 0, ID.Dynamic);
-		Path path1 = new Path(90, 0, ID.Path);
-		Path path2 = new Path(90, 160, 400, 25);
+		//Path path1 = new Path(90, 0, ID.Path);
+		//Path path2 = new Path(90, 160, 400, 25);
 		
 		start = new Nothing(1);
 		//be sure to add paths before adding user
@@ -60,7 +64,9 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		handler.add(user);
 	
-			    	
+		int delay = 1000; 
+	   
+		//taskPerformer = new ActionListener();   	
 	
 	}
 	
@@ -156,7 +162,20 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	   
 	   if (victory)
 	   {
-		    this.level++;
+		   try {
+				               //1000 milliseconds is one second.
+			    this.render();
+			    TimeUnit.MILLISECONDS.sleep(1000);
+			    
+		   } 
+			catch(InterruptedException ex) 
+			{
+			  Thread.currentThread().interrupt();
+			}
+		   
+		   
+		   
+		   this.level++;
 	   }
 	    
 	    
@@ -166,6 +185,15 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	   
 	
 	}
+	
+	
+	public static void advanceLevel()
+	{
+		//Game.levelPlus();
+	}
+	
+	
+	
 	
 	private void runSetLevel()
 	{
@@ -179,6 +207,39 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 			start.level3();
 		
 		
+	}
+	
+	private void levelPlus()
+	{
+		this.level++;
+	}
+	
+	
+	
+	public void renderVictoryScreen()
+	{
+		//BufferedImage bs = new BufferedImage(1,1,1);
+		
+				BufferStrategy bs = this.getBufferStrategy();
+				if(bs == null)
+				{
+					this.createBufferStrategy(3);
+					return;
+				}
+				
+				//Graphics g = bs.getGraphics();
+				
+				Graphics g = bs.getDrawGraphics();
+		
+				user.displayVictoryMessage(g);
+				
+				try {
+					TimeUnit.MILLISECONDS.sleep(1000);              //1000 milliseconds is one second.
+				    } 
+				catch(InterruptedException ex) 
+				{
+				  Thread.currentThread().interrupt();
+				}
 	}
 	
 	public void render()
@@ -209,7 +270,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		g.setColor(Color.BLUE);
-		g.fillRect(515, 0, 180 , HEIGHT);
+		g.fillRect(525, 0, 180 , HEIGHT);
 		g.setColor(Color.WHITE);
 		g.drawString("The Game", 600, 50);
 		g.setColor(Color.WHITE);
@@ -223,8 +284,16 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		g.drawString(level.toString(), 650, 120);
 		
 		if(victory)
-		{
+		{						
 			user.displayVictoryMessage(g);
+		
+			try {
+				TimeUnit.MILLISECONDS.sleep(500);              //1000 milliseconds is one second.
+			    } 
+			catch(InterruptedException ex) 
+			{
+			  Thread.currentThread().interrupt();
+			}
 		}
 		
 		g.dispose();
