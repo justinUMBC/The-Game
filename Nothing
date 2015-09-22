@@ -123,7 +123,7 @@ public class Nothing extends GameObject{
 	
 
 	
-	private void fillXRow(int start, int end)
+	private void fillRow(int start, int end)
 	{
 		for ( int x = start; x < end; x++)
 		{
@@ -131,7 +131,7 @@ public class Nothing extends GameObject{
 		}
 	}
 	
-	private void fillYCol(int start, int end)
+	private void fillCol(int start, int end)
 	{
 		for ( int x = start; x < end; x+=21)
 		{
