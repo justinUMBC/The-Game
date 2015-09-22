@@ -121,15 +121,7 @@ public class Nothing extends GameObject{
 		}
 	}
 	
-	
-	private void fillXRow(int start, int end)
-	{
-		for ( int x = start; x < end; x++)
-		{
-			wallData[x] = 0;
-		}
-	}
-	
+
 	
 	private void fillXRow(int start, int end)
 	{
