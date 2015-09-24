@@ -345,4 +345,55 @@ public class Nothing extends GameObject{
 		theWalls = new ArrayList<Wall>();
 		this.generateLevel();	
 	}
+	public void level4()
+	{
+		wallData = new int[440];
+		this.clear();
+	
+	this.fillCol(1,148);
+	this.fillRow(148,166);
+	this.fillCol(166, 397);
+	this.fillRow(387, 397);
+	this.fillRow(406, 408);
+	this.fillCol(343, 406);
+	wallData[344] = 0;
+	wallData[323] = 0;
+	wallData[324] = 0;
+	wallData[303] = 0;
+	wallData[304] = 0;
+	wallData[283] = 0;
+	wallData[284] = 0;
+	wallData[263] = 0;
+	this.fillRow(237, 242);
+	wallData[258] = 0;
+	wallData[257] = 0;
+	wallData[278] = 0;
+	wallData[277] = 0;
+	wallData[298] = 0;
+	wallData[319] = 0;
+	wallData[318] = 0;
+	wallData[339] = 0;
+	wallData[359] = 0;
+	this.fillRow(357,359);
+	this.fillCol(189,357);
+	this.fillRow(189, 206);
+	this.fillCol(206, 290);
+	wallData[289] = 0;
+	wallData[310] = 0;
+	wallData[309] = 0;
+	wallData[330] = 0;
+	wallData[329] = 0;
+	wallData[350] = 0;
+	wallData[349] = 0;
+	wallData[348] = 0;
+	wallData[347] = 2;
+	
+	theWalls = new ArrayList<Wall>();
+	this.generateLevel();
+	
+	
+	
+	
+	}
+	
 }
