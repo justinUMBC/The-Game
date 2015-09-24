@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -42,7 +43,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	{	//add anything new to this method
 		
 		handler = new Handler();
-		this.addKeyListener(new KeyInput(handler));
+		this.addKeyListener(new KeyInput(handler, this));
 		
 		Window window = new Window(WIDTH, HEIGHT, "Impossible Game", this);
 		
@@ -82,6 +83,14 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		thread.start();
 		running = true;
 	}
+	
+	
+
+	
+	
+	
+		
+	
 	
 	public synchronized void stop()
 	{
@@ -181,9 +190,8 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	    
 	    collision = false;
 	   }
+	   	   
 	   
-	   
-	
 	}
 	
 	
@@ -206,10 +214,13 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		if (this.level == 3)
 			start.level3();
 		
+		if (this.level == 4)
+			start.level4();
+		
 		
 	}
 	
-	private void levelPlus()
+	public void addLevel()
 	{
 		this.level++;
 	}
