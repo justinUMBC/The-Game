@@ -6,10 +6,12 @@ public class KeyInput extends KeyAdapter {
 	
 	private int velX = 3;
 	private int velY = 3;
+	private Game gg;
 
-	public KeyInput(Handler handler)
+	public KeyInput(Handler handler, Game g)
 	{
 		this.handler = handler;
+		this.gg = g;
 	}
 
 	public void keyPressed(KeyEvent e)
@@ -20,7 +22,7 @@ public class KeyInput extends KeyAdapter {
 		
 		else if (key == KeyEvent.VK_N)
 		{
-			
+			gg.addLevel();
 		}
 		
 		else
@@ -32,7 +34,13 @@ public class KeyInput extends KeyAdapter {
 				{
 					// key events for the moveable object
 				 //temp.setVFX(level)
-				if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
+				
+					if (key == KeyEvent.VK_N)
+					{
+						temp.nextLevel();
+					}
+					
+					if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
 					temp.setVelY(-velY);
 				if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
 					temp.setVelY(velY);
