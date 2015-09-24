@@ -387,6 +387,13 @@ public class Nothing extends GameObject{
 	wallData[349] = 0;
 	wallData[348] = 0;
 	wallData[347] = 2;
+	wallData[397] = 0;
+	wallData[408] = 0;
+	wallData[242] = 0;
+	wallData[360] = 0;
+	wallData[290] = 0;
+	
+	
 	
 	theWalls = new ArrayList<Wall>();
 	this.generateLevel();
