@@ -403,4 +403,38 @@ public class Nothing extends GameObject{
 	
 	}
 	
+public void level5()
+	{
+		wallData = new int[440];
+		this.clear();
+		
+		this.fillCol(1,400);
+		this.fillCol(66,360);
+		this.fillCol(154,301);
+		this.fillCol(156, 219);
+		this.fillCol(158, 284);
+		this.fillCol(261, 282);
+		this.fillCol(361, 403);
+		this.fillCol(118, 286);
+		this.fillCol(110, 341);
+		this.fillCol(80, 353);
+		this.fillCol(120, 330);
+		this.fillCol(40, 439);
+		this.fillRow(22, 40);
+		this.fillRow(66, 81);
+		this.fillRow(110, 118);
+		this.fillRow(154, 156);
+		this.fillRow(280, 287);
+		this.fillRow(320, 333);
+		this.fillRow(360, 375);
+		this.fillRow(400, 402);
+		this.fillRow(403, 419);
+		wallData[219]=2;
+		
+		
+		theWalls = new ArrayList<Wall>();
+		this.generateLevel();
+	}
+	
+	
 }
