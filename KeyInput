@@ -42,15 +42,7 @@ public class KeyInput extends KeyAdapter {
 					
 					//velX+= gg.getLevel();
 					//velY+= gg.getLevel();
-					
-					
-					// key events for the moveable object
-				 //temp.setVFX(level)
-				
-					if (key == KeyEvent.VK_N)
-					{
-						temp.nextLevel();
-					}
+																							
 					
 					if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
 					temp.setVelY(-velY);
