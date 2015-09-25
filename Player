@@ -94,6 +94,16 @@ public class Player extends GameObject
 		g.drawString("You Lose! Good day ", 600, 230);
 	}
 	
+	
+	public void coverBall(Graphics g)
+	{
+		this.x = -10;
+		this.y = -10;
+		
+		this.render(g);	
+	}
+	
+	
 	public void render(Graphics g) 
 	{
 		g.setColor(Color.RED);
