@@ -1,5 +1,6 @@
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
@@ -49,23 +50,16 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		
-		user = new Player(32, 0, ID.Dynamic);
-		//Path path1 = new Path(90, 0, ID.Path);
-		//Path path2 = new Path(90, 160, 400, 25);
+		user = new Player(32, 0, ID.Dynamic);		
 		
 		start = new Nothing(1);
-		//be sure to add paths before adding user
-		//handler.add(path1);
-		//handler.add(path2);
-		
+			
 		handler.add(start);
-		//start.level1();
-		this.runSetLevel();
+		start.level1();		
 		
 		
 		handler.add(user);
-	
-		int delay = 1000; 
+		 
 	   
 		//taskPerformer = new ActionListener();   	
 	
@@ -84,13 +78,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		running = true;
 	}
 	
-	
-
-	
-	
-	
-		
-	
+							
 	
 	public synchronized void stop()
 	{
@@ -138,10 +126,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	public void tick()
 	{
 		handler.tick();
-		
-		//if (user.getPlayerRekt().intersects())
-	
-		
+								
 	   for (int x = 0; x < start.getTheWallsLength() ; x++)
 	   {
 		  if (this.start.getTheWallAt(x) != null)
@@ -193,18 +178,21 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	   	   
 	   
 	}
-	
-	
-	public static void advanceLevel()
+			
+		
+	public int getLevel()
 	{
-		//Game.levelPlus();
+		return this.level;
 	}
 	
-	
-	
-	
-	private void runSetLevel()
+	private void runSetLevel(Graphics g)
 	{
+		
+		if (victory)
+		{
+			this.renderVictoryScreen(g);
+		}
+		
 		if (this.level == 1)
 			start.level1();
 		
@@ -225,33 +213,38 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		this.level++;
 	}
 	
-	
-	
-	public void renderVictoryScreen()
+	public void resetLevel()
 	{
-		//BufferedImage bs = new BufferedImage(1,1,1);
-		
-				BufferStrategy bs = this.getBufferStrategy();
-				if(bs == null)
-				{
-					this.createBufferStrategy(3);
-					return;
-				}
-				
-				//Graphics g = bs.getGraphics();
-				
-				Graphics g = bs.getDrawGraphics();
-		
-				user.displayVictoryMessage(g);
-				
-				try {
-					TimeUnit.MILLISECONDS.sleep(1000);              //1000 milliseconds is one second.
-				    } 
-				catch(InterruptedException ex) 
-				{
-				  Thread.currentThread().interrupt();
-				}
+		user.resetPlayer();
 	}
+	
+	public void renderVictoryScreen(Graphics g)
+	{
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+										
+		g.setColor(Color.GREEN);
+		g.setFont(new Font( "SansSerif", Font.PLAIN, 38 ));
+		
+		
+		g.drawString("Victory!", 200, 250);		
+		user.coverBall(g);
+						
+		try {
+			TimeUnit.MILLISECONDS.sleep(500);              //1000 milliseconds is one second.
+		    } 
+		catch(InterruptedException ex) 
+		{
+		  Thread.currentThread().interrupt();
+		}
+				
+	
+		g.setFont(new Font("SansSerif", Font.PLAIN, 12 ));
+	
+	}
+	
+		
+	
 	
 	public void render()
 	{
@@ -275,7 +268,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		//start.level1();
-		this.runSetLevel();
+		this.runSetLevel(g);
 		user.render(g);
 		
 		
@@ -294,18 +287,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		g.drawString("Level:", 600, 120);
 		g.drawString(level.toString(), 650, 120);
 		
-		if(victory)
-		{						
-			user.displayVictoryMessage(g);
 		
-			try {
-				TimeUnit.MILLISECONDS.sleep(500);              //1000 milliseconds is one second.
-			    } 
-			catch(InterruptedException ex) 
-			{
-			  Thread.currentThread().interrupt();
-			}
-		}
 		
 		g.dispose();
 		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
