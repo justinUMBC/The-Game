@@ -13,6 +13,8 @@ public class Player extends GameObject
 
 	public Integer deathCount = 0;
 	
+	private Integer xero = 0;
+	
 	
 	
 	
@@ -61,6 +63,11 @@ public class Player extends GameObject
 		deathCount++;
 	}
 	
+	public void removeDeath()
+	{
+		deathCount--;
+	}
+	
 	public void tick()
 	{
 		x += velX;
@@ -78,7 +85,17 @@ public class Player extends GameObject
 	{
 		g.setColor(Color.WHITE);
 		g.drawString("Deaths:", 600, 150);
-		g.drawString(deathCount.toString(), 650, 150);
+		
+		
+		if (deathCount >= 0 )
+		{	
+		 g.drawString(deathCount.toString(), 650, 150);
+		}
+		
+		else if (deathCount < 0)
+		{
+			g.drawString(xero.toString(), 650, 150);
+		}
 	}
 	
 	
