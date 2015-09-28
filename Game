@@ -11,7 +11,7 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 //this method will hold all aspects of the game
@@ -24,19 +24,21 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	final int WIDTH = 700, HEIGHT = 525;
 	private Thread thread;
 	Handler handler;
-	//public int frames;
+	
 	public Integer frames;
 	
 	private ActionListener taskPerformer;
 	
 	private Nothing start;
+	private Scanner sc;
 	
 	private boolean running = false;
 	private BufferedImage image;
 	
 	private boolean collision = false;
 	private boolean victory = false;
-	private Integer level = 1;
+	private boolean onStartScreen = false;
+	private Integer level = 0;
 	
 	Player user;
 	
@@ -60,16 +62,12 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		handler.add(user);
 		 
-	   
-		//taskPerformer = new ActionListener();   	
+	   sc = new Scanner(System.in);
+		  	
 	
 	}
-	
-	//image gen - WiP
-	
-	
-	
-	
+				
+		
 	
 	public synchronized void start()
 	{
@@ -147,7 +145,7 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		  
 		  }
 		  
-	    if (collision)
+	    if (collision && !onStartScreen)
 	    {
 	    	user.addDeath();
 	    	user.resetPlayer();
@@ -188,26 +186,32 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 	private void runSetLevel(Graphics g)
 	{
 		
-		if (victory)
+		if (this.level == 0)
 		{
-			this.renderVictoryScreen(g);
+			this.renderStartScreen(g);
 		}
 		
-		if (this.level == 1)
-			start.level1();
 		
-		if (this.level == 2)		
+		else if (victory)
+		{
+			this.renderVictoryScreen(g);
+			user.removeDeath();
+		}
+		
+		else if (this.level == 1)						
+			start.level1();				
+		
+		else if (this.level == 2)		
 			start.level2();
 		
-		if (this.level == 3)
+		else if (this.level == 3)
 			start.level3();
 		
-		if (this.level == 4)
+		else if (this.level == 4)
 			start.level4();
 		
-		if (this.level == 5)
-		    start.level5();
-		
+		else if (this.level == 5)
+		    start.level5();		
 	}
 	
 	public void addLevel()
@@ -242,24 +246,55 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 				
 	
 		g.setFont(new Font("SansSerif", Font.PLAIN, 12 ));
+		
 	
 	}
 	
+	
+	public void renderStartScreen(Graphics g)
+	{
 		
+		this.onStartScreen = true;
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+										
+		g.setColor(Color.GREEN);
+		g.setFont(new Font( "SansSerif", Font.PLAIN, 38 ));
+		
+		
+		g.drawString("The Game", 170, 230);		
+		user.coverBall(g);
+	
+	
+		g.setFont(new Font("SansSerif", Font.PLAIN, 12 ));
+	
+		g.drawString("Press Enter To Start", 200, 270);
+		
+	}
+	
+	
+	public void startGame()
+	{
+		this.onStartScreen = false;
+		this.level = 1;
+		user.resetPlayer();
+		
+	}
+	
+	
 	
 	
 	public void render()
 	{
-		//BufferedImage bs = new BufferedImage(1,1,1);
-		
+				
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null)
 		{
 			this.createBufferStrategy(3);
 			return;
 		}
-		
-		//Graphics g = bs.getGraphics();
+			
 		
 		Graphics g = bs.getDrawGraphics();
 		
@@ -292,7 +327,6 @@ public class Game extends Canvas  implements Runnable, ImageObserver
 		
 		
 		g.dispose();
-		//g.drawImage(bs, 0, 0, WIDTH, HEIGHT, Color.WHITE, null);
 		bs.show();
 		
 		this.victory = false;
