@@ -434,6 +434,56 @@ public void level5()
 		theWalls = new ArrayList<Wall>();
 		this.generateLevel();
 	}
+	public void level6()
+	{
+		wallData = new int[440];
+		this.clear();
+		
+		this.fillCol(1, 190);
+		this.fillCol(190, 421);
+		this.fillCol(3, 150);
+		this.fillCol(5, 152);
+		this.fillCol(257, 425);
+		this.fillCol(260, 428);
+		this.fillCol(360, 423);
+		this.fillCol(196, 259);
+		
+		this.fillCol(50, 155);
+		this.fillCol(52, 157);
+		this.fillCol(54, 159);
+		
+		this.fillCol(56, 182);
+		this.fillCol(19, 439);
+		this.fillCol(370, 433);
+		this.fillCol(263, 347);
+		
+		this.fillRow(1, 19);
+		this.fillRow(127, 130);
+		this.fillRow(131, 135);
+		this.fillRow(161, 167);
+		this.fillRow(136, 139);
+		
+		this.fillRow(190, 209);
+		this.fillRow(253, 256);
+		this.fillRow(317, 319);
+		this.fillRow(399, 410);
+		this.fillRow(412, 419);
+		
+		this.fillRow(50, 53);
+		this.fillRow(54, 57);
+		this.fillRow(260, 266);
+		this.fillRow(370, 375);
+		this.fillRow(326, 328);
+		
+		wallData[328]=2;
+		
+		
+		
+	
+		
+		theWalls = new ArrayList<Wall>();
+		this.generateLevel();
+	}
 	public void level7()
 {
 	wallData = new int[440];
